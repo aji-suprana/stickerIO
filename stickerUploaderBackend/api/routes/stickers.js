@@ -46,26 +46,61 @@ router.get('/',(req,res,next)=>{
 })
 
 /////////////////////////////////////////////////////////
+// link: {stagebaseurl}/stickers/
+// HTTPMethod: GET
+// Request Format:
+// 
+// Response Format:
+//
+////////////////////////////////////////////////////////
+router.get('/:stickerId',(req,res,next)=>{
+    const id = req.params.stickerId;
+
+    Stickers
+    .findById(id)
+    .exec()
+    .then(docs =>{
+        const response = {
+            count: docs.length,
+            stickers: docs
+        };
+
+        res.status(200).json(response);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+})
+
+
+/////////////////////////////////////////////////////////
 // link: {stagebaseurl}/stickers/upload
 // HTTPMethod: POST
 // Request Format:
 // {
-//   "name" : "name",
-//   "stickerURL" : "name",
-//   "stickerContent" : ["name,name,name"]
-// }
-//
+//     "name" : "na2me2",
+//     "stickerURL" : "https://t.me/addstickers/MelieTheCavy",
+//     "thumbnail" : "https://i.ibb.co/Y0qtBxt/Untitled-1.png",
+//     "stickerContent" : ["https://i.ibb.co/Y0qtBxt/Untitled-1.png","https://i.ibb.co/Y0qtBxt/Untitled-1.png","https://i.ibb.co/Y0qtBxt/Untitled-1.png"]
+//   }
+
+
+// Response Format:
 // {
-//     "message": "User Created",
+//     "message": "Sticker Uploaded",
 //     "result": {
 //         "stickerContent": [
 //             "https://i.ibb.co/Y0qtBxt/Untitled-1.png",
 //             "https://i.ibb.co/Y0qtBxt/Untitled-1.png",
 //             "https://i.ibb.co/Y0qtBxt/Untitled-1.png"
 //         ],
-//         "_id": "5d2830e156459501e85f4971",
-//         "name": "name2",
-//         "stickerURL": "name"
+//         "_id": "5d2838d9fbbe5b4d08c26042",
+//         "name": "na2me2",
+//         "stickerURL": "https://i.ibb.co/Y0qtBxt/Untitled-1.png",
+//         "thumbnailURL": "https://i.ibb.co/Y0qtBxt/Untitled-1.png"
 //     }
 // }
 ////////////////////////////////////////////////////////
@@ -73,10 +108,10 @@ router.post('/upload',(req,res,next)=>{
 
     const body = req.body;
 
-    const requestFormatCorrect = body["stickerContent"] != undefined && body["name"] != undefined && body["stickerURL"] != undefined;
+    const requestFormatCorrect = body["stickerContent"] != undefined && body["name"] != undefined && body["stickerURL"] != undefined && body["thumbnail"] != undefined;
     if(!requestFormatCorrect)
     {
-        const msg = {"error": "request format has to contain name, stickerContent, StickerURL"};
+        const msg = {"error": "request format has to contain name, stickerContent, StickerURL, thumbnail"};
         console.log(msg);
         res.status(500).json(msg);
         return;
@@ -116,6 +151,7 @@ router.post('/upload',(req,res,next)=>{
                         _id: new mongoose.Types.ObjectId(),
                         name: req.body.name,
                         stickerURL: req.body.stickerURL,
+                        thumbnailURL: req.body.thumbnail,
                         stickerContent: req.body.stickerContent
                     });
 
