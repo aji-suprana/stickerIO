@@ -1,0 +1,4 @@
+#BACKEND IGNORED
+stickerUploaderBackend/node_modules/
+
+#FRONTEND IGNORED
