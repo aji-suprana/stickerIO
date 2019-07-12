@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 
 const app = express();
 const stickersRoutes = require('./api/routes/stickers');
-const reportsRoutes = require('./api/routes/reports');
 
 mongoose.connect(
     "mongodb://localhost:27017/stickerio",
@@ -34,7 +33,6 @@ app.use((req,res,next)=>{
 
 //Handling all routes
 app.use('/stickers',stickersRoutes);
-app.use('/reports',reportsRoutes);
 
 //Handling all Errors
 app.use((req,res,next)=>{
