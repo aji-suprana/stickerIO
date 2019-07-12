@@ -4,6 +4,27 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const isImageUrl = require('is-image-url');
 
+/////////////////////////////////////////////////////////
+// link: {stagebaseurl}/stickers/
+// HTTPMethod: GET
+// Request Format:
+// 
+// Response Format:
+// {
+//     "count": 1,
+//     "stickers": [
+//         {
+//             "stickerContent": [
+//                 "name,name,name"
+//             ],
+//             "_id": "5d280bc66c23f0234cfe35a5",
+//             "name": "name",
+//             "stickerURL": "name",
+//             "__v": 0
+//         }
+//     ]
+// }
+////////////////////////////////////////////////////////
 router.get('/',(req,res,next)=>{
     Stickers
     .find()
@@ -24,7 +45,31 @@ router.get('/',(req,res,next)=>{
     });
 })
 
-router.post('/',(req,res,next)=>{
+/////////////////////////////////////////////////////////
+// link: {stagebaseurl}/stickers/upload
+// HTTPMethod: POST
+// Request Format:
+// {
+//   "name" : "name",
+//   "stickerURL" : "name",
+//   "stickerContent" : ["name,name,name"]
+// }
+//
+// {
+//     "message": "User Created",
+//     "result": {
+//         "stickerContent": [
+//             "https://i.ibb.co/Y0qtBxt/Untitled-1.png",
+//             "https://i.ibb.co/Y0qtBxt/Untitled-1.png",
+//             "https://i.ibb.co/Y0qtBxt/Untitled-1.png"
+//         ],
+//         "_id": "5d2830e156459501e85f4971",
+//         "name": "name2",
+//         "stickerURL": "name"
+//     }
+// }
+////////////////////////////////////////////////////////
+router.post('/upload',(req,res,next)=>{
 
     const body = req.body;
 
@@ -80,7 +125,7 @@ router.post('/',(req,res,next)=>{
                         response = {...result._doc};
                         delete response["__v"];
                         res.status(201).json({
-                            message:'User Created',
+                            message:'Sticker Uploaded',
                             result: response
                         })
                     })
