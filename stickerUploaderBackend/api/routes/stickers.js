@@ -58,12 +58,11 @@ router.get('/:stickerName',(req,res,next)=>{
     const name = req.params.stickerName;
 
     Stickers
-    .find({"name" : name})
+    .findOne({"name" : name})
     .select('name _id stickerContent')
     .exec()
     .then(docs =>{
         const response = {
-            count: docs.length,
             stickers: docs
         };
 
@@ -77,6 +76,27 @@ router.get('/:stickerName',(req,res,next)=>{
     });
 })
 
+router.get('/id/:stickerId',(req,res,next)=>{
+    const id = req.params.stickerId;
+
+    Stickers
+    .findById(id)
+    .select('name _id stickerContent')
+    .exec()
+    .then(docs =>{
+        const response = {
+            stickers: docs
+        };
+
+        res.status(200).json(docs);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+})
 
 /////////////////////////////////////////////////////////
 // link: {stagebaseurl}/stickers/upload
