@@ -28,6 +28,7 @@ const isImageUrl = require('is-image-url');
 router.get('/',(req,res,next)=>{
     Stickers
     .find()
+    .select('name _id thumbnailURL')
     .exec()
     .then(docs =>{
         const response = {
@@ -86,8 +87,6 @@ router.get('/:stickerId',(req,res,next)=>{
 //     "thumbnail" : "https://i.ibb.co/Y0qtBxt/Untitled-1.png",
 //     "stickerContent" : ["https://i.ibb.co/Y0qtBxt/Untitled-1.png","https://i.ibb.co/Y0qtBxt/Untitled-1.png","https://i.ibb.co/Y0qtBxt/Untitled-1.png"]
 //   }
-
-
 // Response Format:
 // {
 //     "message": "Sticker Uploaded",
