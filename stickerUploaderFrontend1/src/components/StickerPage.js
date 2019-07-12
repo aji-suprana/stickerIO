@@ -13,6 +13,7 @@ export default class StickerPage extends React.Component {
             stickerId: '',
             stickerName: '',
             stickerContent: [],
+            stickerURL: ''
         }
     }
 
@@ -20,10 +21,12 @@ export default class StickerPage extends React.Component {
         const { stickerName } = this.props.match.params;
         getStickerByName(stickerName)
         .then(result => {
+            console.log(result);
             this.setState({
                 stickerId: result._id,
                 stickerName: result.name,
-                stickerContent: result.stickerContent
+                stickerContent: result.stickerContent,
+                stickerURL: result.stickerURL
             })
         })
     }
@@ -37,7 +40,8 @@ export default class StickerPage extends React.Component {
             <Container>
                 <h1>"{this.state.stickerName}" stickers pack</h1>
                 <div className="button-group">
-                    <Button color="success" size="lg">Install Stickers</Button>
+                    {/* <Button color="success" size="lg">Install Stickers</Button> */}
+                    <a href={this.state.stickerURL} className="btn btn-success btn-lg" target="_blank">Install Sticker</a>
                     <Button color="danger" size="lg">Report</Button>
                 </div>
 
@@ -45,7 +49,7 @@ export default class StickerPage extends React.Component {
                     {
                         this.state.stickerContent.map((_sticker) => {
                             return(
-                                <Col md="3" className="sticker-img">
+                                <Col xs="6" sm="4" md="3" className="sticker-img">
                                     <img src={_sticker}/>
                                 </Col>
                             )

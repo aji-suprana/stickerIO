@@ -12,7 +12,7 @@ export default class StickerList extends React.Component {
         } = this.props
 
         return(
-            <Col md="3" className="sticker-list">
+            <Col xs="6" sm="4" md="3" className="sticker-list">
                 <a href={`stickers/${singleLink}`}>
                 <div className="wrapper">
                     <img src={image}/>

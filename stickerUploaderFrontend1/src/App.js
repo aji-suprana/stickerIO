@@ -45,7 +45,7 @@ export default class App extends React.Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav navbar>
                 <NavItem>
-                  <NavLink href="/">Home</NavLink>
+                  <NavLink href="/" active>Home</NavLink>
                 </NavItem>
               </Nav>
             </Collapse>

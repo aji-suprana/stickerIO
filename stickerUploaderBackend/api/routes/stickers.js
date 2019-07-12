@@ -59,7 +59,7 @@ router.get('/:stickerName',(req,res,next)=>{
 
     Stickers
     .findOne({"name" : name})
-    .select('name _id stickerContent')
+    .select('name _id stickerURL stickerContent')
     .exec()
     .then(docs =>{
         const response = {
