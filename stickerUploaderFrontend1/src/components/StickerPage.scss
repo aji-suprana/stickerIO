@@ -1,0 +1,27 @@
+
+
+.container {
+    h1 {
+        text-align: left;
+    }
+    .button-group {
+        text-align: left;
+
+        button {
+            margin: 10px;
+        }
+    }
+
+    .stickers-page {
+        .sticker-img{
+            display: inline-block;
+            padding: calc(5px + 2vmin);
+        }
+    
+        img {
+            border: 2px solid rgba(0,0,0,.1);
+            width: 100%;
+            height: auto;
+        }
+    }
+}

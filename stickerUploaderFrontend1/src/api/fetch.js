@@ -23,3 +23,15 @@ export function getStickers() {
         return res.json();
     })
 }
+
+export function getStickerByName(name) {
+    return fetch(`${baseUrl}/stickers/${name}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type' : 'application/json',
+        }
+    })
+    .then( res => {
+        return res.json();
+    })
+}

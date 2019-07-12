@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.scss';
 import Home from './components/home';
+import StickerPage from './components/StickerPage';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import {
@@ -55,6 +56,7 @@ export default class App extends React.Component {
           <Router>
             <Switch>
               <Route path="/" exact component={Home}/>
+              <Route path="/stickers/:stickerName" component={StickerPage}/>
             </Switch>
           </Router>
         </Container>

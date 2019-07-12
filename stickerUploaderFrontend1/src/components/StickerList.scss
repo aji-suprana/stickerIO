@@ -3,6 +3,16 @@
     list-style-type: none;
     display: inline-block;
     padding: 10px 10px 0 10px;
+    margin-top: 1vw;
+
+    a {
+        color: #000;
+    }
+
+    a:hover {
+        color: #2E87CA;
+        text-decoration:none;
+    }
 
     .wrapper {
         position: relative;

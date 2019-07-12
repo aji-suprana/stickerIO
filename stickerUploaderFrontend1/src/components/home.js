@@ -20,6 +20,7 @@ export default class Home extends React.Component{
             let stickerList = result.stickers.map( (_sticker) => {
                 return (
                     <StickerList
+                        singleLink={_sticker.name}
                         image={_sticker.thumbnailURL}
                         title={_sticker.name}
                     />
