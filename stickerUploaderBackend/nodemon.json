@@ -1,0 +1,7 @@
+{
+    "env":{
+        "DATABASEURI" : "mongodb://localhost:27017/stickerio",
+        "JWT_KEY" : "ajisuprana",
+        "ADMIN_KEY": "$2b$10$lm.EhHdThqWxQhvK2g0JY.WvakBBUpfHjzrhZCKLSrIORMpVBaHuS"
+    }
+}
