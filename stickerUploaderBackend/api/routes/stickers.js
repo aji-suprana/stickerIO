@@ -54,11 +54,11 @@ router.get('/',(req,res,next)=>{
 // Response Format:
 //
 ////////////////////////////////////////////////////////
-router.get('/:stickerId',(req,res,next)=>{
-    const id = req.params.stickerId;
+router.get('/:stickerName',(req,res,next)=>{
+    const name = req.params.stickerName;
 
     Stickers
-    .findById(id)
+    .find({"name" : name})
     .select('name _id stickerContent')
     .exec()
     .then(docs =>{
@@ -67,7 +67,7 @@ router.get('/:stickerId',(req,res,next)=>{
             stickers: docs
         };
 
-        res.status(200).json(response);
+        res.status(200).json(docs);
     })
     .catch(err => {
         console.log(err);
