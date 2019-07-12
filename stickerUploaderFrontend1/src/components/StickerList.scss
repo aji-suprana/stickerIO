@@ -1,0 +1,24 @@
+
+.sticker-list {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 10px 0 10px;
+
+    .wrapper {
+        position: relative;
+        border: 2px solid rgba(175,175,175,.5);
+
+        img {
+            padding: 1vw;
+            width: 100%;
+        }
+        h2 {
+            font-size: calc(5px + 1vmin);
+            background: rgba(0,0,0,.045);
+            height: calc(20px + 2vmin);
+            line-height: calc(20px + 2vmin);
+            margin-bottom: 0;
+            border-top: 2px solid rgba(175,175,175,.5)
+        }
+    }
+}
