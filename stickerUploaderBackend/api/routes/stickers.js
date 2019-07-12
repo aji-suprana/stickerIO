@@ -59,6 +59,7 @@ router.get('/:stickerId',(req,res,next)=>{
 
     Stickers
     .findById(id)
+    .select('name _id stickerContent')
     .exec()
     .then(docs =>{
         const response = {
