@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://stickerio-backend.herokuapp.com/';
 
 export function getStickerById(id) {
     return fetch(`${baseUrl}/${id}`, {
