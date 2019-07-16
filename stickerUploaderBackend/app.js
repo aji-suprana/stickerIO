@@ -6,12 +6,12 @@ const mongoose = require('mongoose');
 const app = express();
 const stickersRoutes = require('./api/routes/stickers');
 
-mongoose.connect(
-    "mongodb://localhost:27017/stickerio",
-    {
-       useNewUrlParser: true
-    }
-);
+mongoose.connect(process.env.DATABASEURI, {
+    useNewUrlParser: true
+}).catch(function (err) {
+    console.error('App starting error:', err.stack);
+    process.exit(1);
+});
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended:false}));
