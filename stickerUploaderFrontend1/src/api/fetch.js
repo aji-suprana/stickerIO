@@ -1,5 +1,24 @@
-const baseUrl = 'https://stickerio-backend.herokuapp.com/';
+const baseUrl = 'https://stickerio-backend.herokuapp.com';
 
+/* USERS */
+export function login(email, password) {
+    return fetch (`${baseUrl}/auth/authentication`, {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(res => {
+        return res.json()
+    })
+}
+
+
+/* STICKERS */
 export function getStickerById(id) {
     return fetch(`${baseUrl}/${id}`, {
         method: 'GET',

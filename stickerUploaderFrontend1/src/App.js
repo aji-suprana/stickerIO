@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.scss';
 import Home from './components/home';
 import StickerPage from './components/StickerPage';
 import 'bootstrap/dist/css/bootstrap.css';
+import UserLogin from './components/UserLogin';
 
 import {
   Container,
@@ -40,7 +40,7 @@ export default class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <Navbar dark expand="md">
-            <NavbarBrand href="/">Telegram Stickers</NavbarBrand>
+            <NavbarBrand href="/">Telegram Animated Stickers</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav navbar>
@@ -57,6 +57,7 @@ export default class App extends React.Component {
             <Switch>
               <Route path="/" exact component={Home}/>
               <Route path="/stickers/:stickerName" component={StickerPage}/>
+              <Route path="/user/login" component={UserLogin}/>
             </Switch>
           </Router>
         </Container>

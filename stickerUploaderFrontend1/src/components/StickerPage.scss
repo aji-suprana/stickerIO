@@ -23,5 +23,12 @@
             width: 100%;
             height: auto;
         }
+        
+        img.loading {
+            width: calc(25px + 2vmin);
+            height: calc(25px + 2vmin);
+            border: none;
+            margin-top: calc(80px + 2vw);
+        }
     }
 }

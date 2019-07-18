@@ -1,4 +1,3 @@
-
 .sticker-list {
     list-style-type: none;
     display: inline-block;
@@ -21,7 +20,11 @@
         img {
             padding: 1vw;
             width: 100%;
+            height: calc(10vw + 5vmin);
         }
+
+
+
         h2 {
             font-size: calc(5px + 1vmin);
             background: rgba(0,0,0,.045);
@@ -29,6 +32,40 @@
             line-height: calc(20px + 2vmin);
             margin-bottom: 0;
             border-top: 2px solid rgba(175,175,175,.5)
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+
+    .sticker-list {
+        .wrapper{
+            img {
+                padding: 0;
+                height: calc(30vw + 5vmin);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 720px) {
+    .sticker-list {
+        .wrapper{
+            img {
+                padding: 0;
+                height: calc(15vw + 7vmin);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 578px) and (max-width : 992px) {
+    .sticker-list {
+        .wrapper{
+            img {
+                padding: 0;
+                height: calc(13vw + 7vmin);
+            }
         }
     }
 }

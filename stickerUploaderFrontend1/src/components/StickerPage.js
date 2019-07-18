@@ -13,7 +13,8 @@ export default class StickerPage extends React.Component {
             stickerId: '',
             stickerName: '',
             stickerContent: [],
-            stickerURL: ''
+            stickerURL: '',
+            loading: true
         }
     }
 
@@ -26,16 +27,27 @@ export default class StickerPage extends React.Component {
                 stickerId: result._id,
                 stickerName: result.name,
                 stickerContent: result.stickerContent,
-                stickerURL: result.stickerURL
+                stickerURL: result.stickerURL,
+                loading: false
             })
         })
     }
 
     componentDidMount() {
         this.stickerInfo();
+        document.title = "Telegram Animated Stickers"
     }
 
     render() {
+        let stickerList = this.state.stickerContent.map((_sticker) => {
+            return(
+                <Col xs="6" sm="4" md="3" className="sticker-img">
+                    <img src={_sticker}/>
+                </Col>
+            )
+        });
+
+        let loading = <img className="loading" src={'../loading.gif'}/>;
         return(
             <Container>
                 <h1>"{this.state.stickerName}" stickers pack</h1>
@@ -46,15 +58,7 @@ export default class StickerPage extends React.Component {
                 </div>
 
                 <div className="stickers-page">
-                    {
-                        this.state.stickerContent.map((_sticker) => {
-                            return(
-                                <Col xs="6" sm="4" md="3" className="sticker-img">
-                                    <img src={_sticker}/>
-                                </Col>
-                            )
-                        })
-                    }
+                    {this.state.loading? loading : stickerList}
                 </div>
             </Container>
         )
