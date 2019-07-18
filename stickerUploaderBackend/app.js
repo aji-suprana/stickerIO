@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const stickersRoutes = require('./api/routes/stickers');
+const usersRoutes = require('./api/routes/users');
 
 mongoose.connect(process.env.DATABASEURI, {
     useNewUrlParser: true
@@ -33,6 +34,7 @@ app.use((req,res,next)=>{
 
 //Handling all routes
 app.use('/stickers',stickersRoutes);
+app.use('/auth', usersRoutes);
 
 //Handling all Errors
 app.use((req,res,next)=>{
